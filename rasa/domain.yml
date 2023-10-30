@@ -1,0 +1,119 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - Student
+  - Trainer
+  - Organization
+  - Job_Provider
+  - Options
+
+entities:
+- Options
+
+responses:
+
+  utter_welcome_message:
+  - text: "Hello!, Please Register Your Details"
+
+  # utter_greet:
+  # - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  utter_Options:
+  - buttons:
+    - payload: /Student
+      title: Student
+    - payload: /Trainer
+      title: Trainer
+    - payload: /Organization
+      title: Organization
+    - payload: /Job_Provider
+      title: Job Provider
+    text: "Please select below Options!"
+
+  utter_ask_Firstname:
+  - text: "Please provide your First Name."
+
+  utter_ask_Lastname:
+  - text: "Please provide your Last Name."
+
+  utter_ask_Email:
+  - text: "Please provide your Email."
+
+  utter_ask_Password:
+  - text: "Please provide your Password."
+
+
+slots:
+  Options:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+
+  Firstname:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+
+  Lastname:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+
+  Email:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+
+  Password:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+
+
+forms:
+  slot_for_registration:
+    Firstname:
+    - type: from_text
+    Lastname:
+    - type: from_text
+    Email:
+    - type: from_text
+    Password:
+    - type: from_text
+
+
+actions:
+- post_details
+- Options
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
