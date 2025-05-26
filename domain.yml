@@ -1,0 +1,64 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - ask_status
+  - provide_issue
+  - thanks
+  - session_start
+  - issue_doctor_absent
+  - provide_appointment_details
+
+slots:
+  appointment_details:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+
+
+entities:
+  - issue_type
+
+
+responses:
+
+  utter_ask_appointment_details:
+    - text: "Could you please provide your appointment details (e.g., date, time, and doctor name)?"
+
+  utter_close_ticket:
+    - text: "Thank you. We've recorded the issue. Our team will follow up shortly."
+
+  utter_greet:
+    - text: "👋 Welcome to Medicas! How can I help you today?"
+      buttons:
+        - title: "💳 Payment Failed"
+          payload: "/issue_payment"
+        - title: "📅 Appointments"
+          payload: "/issue_appointment"
+        - title: "👨‍⚕️ Doctor Didn't Join"
+          payload: "/issue_doctor_absent"
+
+  utter_goodbye:
+    - text: "Goodbye! Have a great day!"
+
+  utter_ask_issue:
+    - text: "Please describe your issue."
+
+  utter_thanks:
+    - text: "You're welcome!"
+
+  utter_provide_status:
+    - text: "Your support ticket is being processed. We'll get back to you soon."
+
+actions:
+  - utter_greet
+  - utter_goodbye
+  - utter_thanks
+  - utter_ask_issue
+  - utter_provide_status
+  - action_handle_issue
+  - action_session_start
+  - utter_ask_appointment_details
+  - utter_close_ticket

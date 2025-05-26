@@ -1,0 +1,9 @@
+{
+  "0": "ask_status",
+  "1": "goodbye",
+  "2": "greet",
+  "3": "issue_doctor_absent",
+  "4": "provide_appointment_details",
+  "5": "provide_issue",
+  "6": "thanks"
+}

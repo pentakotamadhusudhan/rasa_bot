@@ -1,0 +1,49 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hello
+    - hi
+    - hey
+    - good morning
+
+- intent: goodbye
+  examples: |
+    - bye
+    - goodbye
+    - see you later
+
+- intent: ask_status
+  examples: |
+    - what's the status of my issue?
+    - any update on my support request?
+    - is my ticket being worked on?
+
+- intent: provide_issue
+  examples: |
+    - I have an issue with my internet
+    - My account is locked
+    - Payment failed
+    - I can't login to my account
+
+- intent: thanks
+  examples: |
+    - thank you
+    - thanks a lot
+    - appreciate your help
+
+
+- intent: issue_doctor_absent
+  examples: |
+    - the doctor didn't join
+    - doctor didn't show up
+    - doctor is missing
+    - no doctor came
+
+- intent: provide_appointment_details
+  examples: |
+    - I had an appointment with Dr. Smith today at 4PM
+    - My appointment was with Dr. Patel on May 10 at 11am
+    - It was at 3PM with Dr. John
+    - Dr. Roy, 5PM today

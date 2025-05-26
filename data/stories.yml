@@ -1,0 +1,35 @@
+version: "3.1"
+
+stories:
+- story: user greets and provides issue
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: provide_issue
+  - action: action_handle_issue
+
+- story: user asks for status
+  steps:
+  - intent: ask_status
+  - action: utter_provide_status
+
+- story: goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: thanks
+  steps:
+  - intent: thanks
+  - action: utter_thanks
+
+
+- story: Doctor didn't join flow
+  steps:
+    - intent: issue_doctor_absent
+    - action: utter_ask_appointment_details
+    - intent: provide_appointment_details
+    - slot_was_set:
+        - appointment_details: "some value"
+    - action: utter_close_ticket
+
