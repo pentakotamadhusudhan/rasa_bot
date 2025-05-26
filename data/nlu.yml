@@ -47,3 +47,11 @@ nlu:
     - My appointment was with Dr. Patel on May 10 at 11am
     - It was at 3PM with Dr. John
     - Dr. Roy, 5PM today
+
+- intent: unable_to_book_appointment
+  examples: |
+    - I can't book an appointment
+    - Unable to schedule a visit
+    - I am having trouble booking an appointment
+    - The appointment booking isn't working
+    - I can't seem to book a doctor's appointmen

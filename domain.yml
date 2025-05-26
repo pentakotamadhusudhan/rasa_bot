@@ -9,27 +9,43 @@ intents:
   - session_start
   - issue_doctor_absent
   - provide_appointment_details
+  - unable_to_book_appointment
+  - provide_appointment_id
+  - provide_email
 
 slots:
+  appointment_id:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_text
   appointment_details:
     type: text
     influence_conversation: true
     mappings:
       - type: from_text
-
+  name:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+  email:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+  
 
 entities:
   - issue_type
 
-
 responses:
-
+  utter_unable_to_book_appointment:
+    - text: "I'm sorry to hear you're having trouble booking an appointment. Let me assist you with that."
   utter_ask_appointment_details:
     - text: "Could you please provide your appointment details (e.g., date, time, and doctor name)?"
-
   utter_close_ticket:
     - text: "Thank you. We've recorded the issue. Our team will follow up shortly."
-
   utter_greet:
     - text: "👋 Welcome to Medicas! How can I help you today?"
       buttons:
@@ -39,16 +55,20 @@ responses:
           payload: "/issue_appointment"
         - title: "👨‍⚕️ Doctor Didn't Join"
           payload: "/issue_doctor_absent"
-
+  utter_ask_name:
+    - text: "Please provide your name."
+  utter_ask_email:
+    - text: "Please provide your email address."
+  utter_ask_appointment_id:
+    - text: "Please provide your appointment ID."
+  utter_thank_you:
+    - text: "Thank you for providing the details. We will get back to you shortly."
   utter_goodbye:
     - text: "Goodbye! Have a great day!"
-
   utter_ask_issue:
     - text: "Please describe your issue."
-
   utter_thanks:
     - text: "You're welcome!"
-
   utter_provide_status:
     - text: "Your support ticket is being processed. We'll get back to you soon."
 
@@ -62,3 +82,12 @@ actions:
   - action_session_start
   - utter_ask_appointment_details
   - utter_close_ticket
+  - action_send_email
+  - action_print_message
+  - action_send_Doctor_absenct_email
+
+
+
+session_config:
+  session_expiration_time: 1  # value in minutes; 0 means infinitely long
+  carry_over_slots_to_new_session: true  # set to false to forget slots between sessions

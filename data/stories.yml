@@ -24,12 +24,24 @@ stories:
   - action: utter_thanks
 
 
-- story: Doctor didn't join flow
+
+
+
+
+- story: unable to book appointment
   steps:
+    - intent: unable_to_book_appointment
+    - action: utter_unable_to_book_appointment
+    - action: utter_ask_email
+    - action: action_send_email
+    - intent: thanks
+    - action: utter_thank_you
+
+
+- story: issue_doctor_absent
+  steps: 
     - intent: issue_doctor_absent
-    - action: utter_ask_appointment_details
-    - intent: provide_appointment_details
-    - slot_was_set:
-        - appointment_details: "some value"
-    - action: utter_close_ticket
+    - action: utter_ask_appointment_id
+    - intent: thanks
+    - action: utter_thank_you
 
